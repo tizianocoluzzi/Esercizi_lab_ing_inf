@@ -1,0 +1,7 @@
+file = open("recensioni.csv", "r", encoding='UTF-8').readlines()
+f = open("recensioni_test.csv", "w+", encoding='UTF-8')
+f.write("text,label\n")
+f.writelines(file[2001:4001])
+f.close()
+f = open("recensioni_add.csv", "w+", encoding='UTF-8').writelines(file[0:2001])
+f.close()
