@@ -1,26 +1,29 @@
 from customer.GenericCustomer import GenericCustomer
+from store_item.GenericItem import GenericItem
 class NormalCustomer(GenericCustomer):
-    def __init__(self, nome, budget):
+    def __init__(self, nome:str, budget:int)->None:
         self.nome = nome
         self.b = budget
-    def acquisto(self, store_item):
+    
+    def acquisto(self, store_item: GenericItem)->bool:
         """acquisto di un item
         return values: 
-            -1 se non abbastanza budget 
-            0 se anadato a buon fine"""
+            False se non abbastanza budget 
+            True se anadato a buon fine"""
         if self.b < store_item.prezzo :
-            return -1
+            return False
         else: 
             self.b -= store_item.prezzo
-        return 0
-    def accredito(self, somma):
+        return True
+    
+    def accredito(self, somma:int)->bool:
         """accredito di somma
             Return values:
-                -1 se somma <= 0
-                0 se andato a buon fine"""
+                False se somma <= 0
+                True se andato a buon fine"""
         if (somma > 0):
             self.b+=somma
-            return 0;
-        return -1;
+            return True
+        return False
 
 

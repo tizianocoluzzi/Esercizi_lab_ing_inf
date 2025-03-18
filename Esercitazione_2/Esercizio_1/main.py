@@ -35,17 +35,9 @@ if __name__ == '__main__':
         a = lista_item(store, user)
         if(a == "quit"):
             print("grazie per l'acquisto!!")
-            break;
+            break
         item = store.cerca_item(a)
         print(f"vuoi acquistare {item}?")
-        ret = user.acquisto(item)
-        if ret == -1:
-            print("acquisto non andato a buon fine");
-        else:
-            ret = store.vendi_item(item)
-            if(ret == -1):
-                print("purtroppo non ci sono abbastanza item")
-                user.accredito(item.prezzo) #accredito l'importo non andato a buo fine
-            else:
-                print("acquisto andato a buon fine")
+        ret = store.vendi_item(item, user)
+        
         time.sleep(2)
