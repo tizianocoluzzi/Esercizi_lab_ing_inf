@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{msg['tabellone'][0:3]}}</p>
+    <p>{{msg['tabellone'][3:6]}}</p>
+    <p>{{msg['tabellone'][6:9]}}</p>
+    <form action = "/game">
+        <input class = "player_display"type = "text" name="player" value = "{{msg['player']}}">
+        <input class = "input casella" type = "text" name = "casella">
+        <input type = "submit" value = "invia">
+    </form>
+</body>
+<style>
+    .player_display {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+</html>
