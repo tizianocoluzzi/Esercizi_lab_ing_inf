@@ -3,8 +3,8 @@ from fastapi.templating import Jinja2Templates
 import requests
 
 app = FastAPI()
-template = Jinja2Templates(directory="./template") #i cazzo di path relativi diocan
-API_BASE_URL = "http://127.0.0.1:8000"
+template = Jinja2Templates(directory="./template") 
+API_BASE_URL = "http://server-api:8000"
 
 @app.get("/")
 def welcome(request: Request):
@@ -13,7 +13,7 @@ def welcome(request: Request):
         response.raise_for_status()
         r = response.json()
     except requests.RequestException as e:
-        print(f"errore: {e}")
+        return template.TemplateResponse("error.html", {"request": request, "msg" :e}) 
     return template.TemplateResponse("index.html", {"request":request, "msg": r})
 
 #in get per prendere il risultato

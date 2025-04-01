@@ -1,0 +1,16 @@
+version: '3.12'
+
+services:
+  server_api:
+    build: ./rest
+    ports: 
+      - "8000:8000"
+    container_name: server-api
+  client_api:
+    build: ./client
+    ports: 
+      - "8001:8000"
+    container_name: client-api
+    depends_on:
+      - server_api
+
